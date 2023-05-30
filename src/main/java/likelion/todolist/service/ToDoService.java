@@ -23,6 +23,15 @@ public class ToDoService {
 	}
 
 	@Transactional
+	public void deleteToDo(Long id){
+		ToDo findToDo = toDoRepository.findOne(id);
+		if(findToDo == null){
+			throw new IllegalArgumentException("해당 아이템이 없습니다.");
+		}
+		toDoRepository.delete(findToDo);
+	}
+
+	@Transactional
 	public ToDo findOne(Long id){
 		return toDoRepository.findOne(id);
 	}
