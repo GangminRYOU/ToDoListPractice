@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,4 +36,10 @@ public class ToDoController {
 		return "redirect:/todo";
 	}
 
+	//서비스 계층에 삭제할 객체의 id를 넘겨준다.
+	@PostMapping("/todo/{todoId}/delete")
+	public String todoDelete(@PathVariable Long todoId){
+		toDoService.deleteToDo(todoId);
+		return "redirect:/todo";
+	}
 }
