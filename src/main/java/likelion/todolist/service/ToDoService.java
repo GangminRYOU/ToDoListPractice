@@ -21,6 +21,16 @@ public class ToDoService {
 		todo.setCompleted(false);
 		toDoRepository.save(todo);
 	}
+//Update코드
+	@Transactional
+	public ToDo updateTodo(Long id, String content, Boolean completed){
+		ToDo findTodo = toDoRepository.findOne(id);
+		findTodo.setContent(content);
+		findTodo.setCompleted(completed);
+		//변경 감지를 이용한다면 여기까지만 작성해도 좋다.
+		toDoRepository.save(findTodo);
+		return findTodo;
+	}
 
 	@Transactional
 	public void deleteToDo(Long id){

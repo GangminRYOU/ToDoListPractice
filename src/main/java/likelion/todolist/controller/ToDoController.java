@@ -42,4 +42,10 @@ public class ToDoController {
 		toDoService.deleteToDo(todoId);
 		return "redirect:/todo";
 	}
+
+	@PostMapping("/todo/update")
+	public String todoUpdate(Long todoId, String content){
+		toDoService.updateTodo(todoId, content, false);
+		return "redirect:/todo";
+	}
 }
