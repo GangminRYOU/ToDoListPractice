@@ -23,6 +23,11 @@ public class ToDoRepository {
 		}
 	}
 
+	//삭제코드 추가
+	public void delete(ToDo todo){
+		em.remove(todo);
+	}
+
 	//데이터를 id로 하나만 조회한다.
 	public ToDo findOne(Long id){
 		return em.find(ToDo.class, id);
